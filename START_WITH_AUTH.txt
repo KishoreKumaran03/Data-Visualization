@@ -1,0 +1,297 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║     DATA VISUALIZATION PLATFORM - FRESH START WITH AUTHENTICATION             ║
+║                                                                               ║
+║      ✅ User Authentication   ✅ Region & Category Data   ✅ Real Maps       ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ⚠️  IMPORTANT: RESET DATABASE BEFORE STARTING                             ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  Database schema has changed. Run this first:
+
+  $ docker-compose down -v
+  $ docker-compose up -d
+  $ wait 30 seconds
+
+  See: RESET_DATABASE_GUIDE.md for details
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🚀 QUICK START (NEW - WITH AUTHENTICATION)                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  1️⃣  Reset Database:
+      $ docker-compose down -v
+      $ docker-compose up -d
+
+  2️⃣  Wait 30 seconds for database initialization
+
+  3️⃣  Open browser:
+      http://localhost:3000
+      ✓ Redirected to LOGIN page (new!)
+
+  4️⃣  CREATE ACCOUNT / REGISTER:
+      - Click: "Register Hub"
+      - Email: your.email@test.com
+      - Password: your_password
+      - Name: Your Name
+      - Click: "CREATE HUB"
+
+  5️⃣  LOGIN:
+      - Use same email & password
+      - Click: "LOGIN"
+
+  6️⃣  IMPORT DATA:
+      - Click: "Import Data" button
+      - Month: January
+      - Year: 2024
+      - File: SAMPLE_DATA.csv (has category + region)
+      - Click: "Continue"
+      - Select file → Upload
+
+  7️⃣  VIEW DASHBOARD:
+      🗺️  India map with regions (dots)
+      🥧 Donut chart with categories
+      📈 Revenue trends
+      ✨ All based on YOUR data!
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🔐 AUTHENTICATION (NEW!)                                                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  BEFORE: Direct access to dashboard
+  NOW: Must login first
+
+  Login Page Features:
+  ✅ Register new account
+  ✅ Email & password login
+  ✅ JWT token (7 day validity)
+  ✅ User isolation (see only your data)
+
+  Data Protection:
+  ✅ Only see YOUR projects
+  ✅ Only see YOUR imported data
+  ✅ API validates ownership
+  ✅ backend verifies token
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📊 NEW FEATURES                                                            ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  1. Region Data (Extracted from imports)
+     ├─ CSV Column: "region"
+     ├─ Example: Maharashtra, Karnataka, Tamil Nadu
+     ├─ Display: Map dots sized by revenue
+     └─ Hover: See region name & total revenue
+
+  2. Category Data (Extracted from imports)
+     ├─ CSV Column: "category"
+     ├─ Example: Electronics, Furniture, Others
+     ├─ Display: Donut chart with percentages
+     └─ Hover: See category name & revenue
+
+  3. User Authentication
+     ├─ Email-based login
+     ├─ Password hashing
+     ├─ JWT tokens (7 days)
+     └─ User data isolation
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📝 YOUR CSV FORMAT (UPDATED REQUIRED)                                      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  MUST HAVE THESE COLUMNS:
+
+  date         → YYYY-MM-DD format (e.g., 2024-01-15)
+  category     → Text category (e.g., "Electronics") ← NEW!
+  region       → Text region (e.g., "Maharashtra")   ← NEW!
+  revenue      → Number (e.g., 50000)
+  quantity     → Number (e.g., 10)
+  cost         → Number (e.g., 25000)
+
+  EXAMPLE:
+  ──────────────────────────────────────────────────────────
+  date,category,region,revenue,quantity,cost
+  2024-01-01,Electronics,Maharashtra,65000,12,32500
+  2024-01-02,Furniture,Karnataka,42000,8,21000
+  2024-01-03,Others,Tamil Nadu,28000,6,14000
+
+  USE PROVIDED: SAMPLE_DATA.csv (already has all columns)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🌍 REGION MAPPING                                                          ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  Supported Region Names:
+
+  Maharashtra        Gujarat            Rajasthan
+  Karnataka          Delhi              Madhya Pradesh
+  Tamil Nadu         Punjab             Uttar Pradesh
+  West Bengal        Telangana          Andhra Pradesh
+  Kerala             Haryana            Bihar
+  Himachal Pradesh   Jammu & Kashmir    Chhattisgarh
+  Jharkhand          Goa                Uttarakhand
+  Manipur            Meghalaya          Mizoram
+  Nagaland           Odisha             Sikkim
+  Tripura            Assam              Arunachal Pradesh
+
+  (Any region name works - not limited to above)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📦 CATEGORY EXAMPLES                                                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  Whatever you want:
+
+  Electronics        Fashion           Healthcare
+  Furniture          Food & Beverage   Home Appliances
+  Software           Logistics         Agriculture
+  Retail             Services          Manufacturing
+  Energy             Mining            Telecommunications
+  Finance            Real Estate       Education
+  Tourism            Entertainment     Textiles
+  Pharma            Chemicals          Automotive
+
+  (Any category name works - not limited to above)
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🎯 AFTER IMPORT - WHAT YOU SEE                                            ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  INDIA MAP (Top-Right):
+  ┌─────────────────────────────┐
+  │    India Market Hubs        │
+  │                             │
+  │ 🔴 Maharashtra: ₹78.0L      │
+  │ 🟢 Karnataka: ₹54.8L        │
+  │ 🟠 Tamil Nadu: ₹37.2L       │
+  │ 🟡 Gujarat: ₹35.0L          │
+  │ 🔵 Other Regions: ₹48.5L    │
+  │                             │
+  │ [Map with 5 colored dots]   │
+  └─────────────────────────────┘
+
+  CATEGORY SPLIT (Bottom-Left):
+  ┌─────────────────────────────┐
+  │    Category Split           │
+  │          (Donut)            │
+  │                             │
+  │  Electronics: 45% ₹152L     │
+  │  Furniture:   35% ₹118L     │
+  │  Others:      20% ₹67L      │
+  │                             │
+  └─────────────────────────────┘
+
+  REVENUE TREND (Top-Left):
+  ┌─────────────────────────────┐
+  │ Revenue & Profit Trend      │
+  │                             │
+  │ Bar: Total Revenue(₹)       │
+  │ Line: Net Profit(%)         │
+  │                             │
+  │ By Month (Jan-Dec)          │
+  │                             │
+  └─────────────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🔄 MULTIPLE ACCOUNTS                                                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  Each user has separate account:
+
+  Account 1:
+  └─ Email: john@company.com
+     └─ Projects: Project A, Project B
+        └─ Data: Only visible to john@company.com
+
+  Account 2:
+  └─ Email: sarah@company.com
+     └─ Projects: Project C, Project D
+        └─ Data: Only visible to sarah@company.com
+
+  ✓ No data sharing between accounts
+  ✓ Each user isolated
+  ✓ Secure & private
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ✅ WHAT'S INCLUDED                                                         ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  ✅ User registration & login
+  ✅ Email-based authentication
+  ✅ Password hashing (bcrypt)
+  ✅ JWT tokens (7 day validity)
+  ✅ Region data extraction
+  ✅ Category data extraction
+  ✅ India map with region dots
+  ✅ Category split donut chart
+  ✅ Revenue trend charts
+  ✅ KPI cards
+  ✅ Export to PDF/Excel
+  ✅ Dark mode
+  ✅ Real-time data updates
+  ✅ User data isolation
+  ✅ Month/Year selector
+  ✅ Clear data option
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🆘 COMMON ISSUES                                                           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  Issue: "Redirects to login every time"
+  Fix:   Token may have expired (lasts 7 days)
+         Re-login with credentials
+
+  Issue: "No map dots showing"
+  Fix:   CSV must have "region" column
+         Re-import data with correct column
+
+  Issue: "Donut chart empty"
+  Fix:   CSV must have "category" column
+         Use SAMPLE_DATA.csv as example
+
+  Issue: "Cannot login after register"
+  Fix:   Wait 2-3 seconds after registration
+         Try login again
+
+  Issue: "Import fails"
+  Fix:   Check CSV has all 6 columns:
+         date, category, region, revenue, quantity, cost
+         Restart backend: docker-compose restart api
+
+  Issue: "Database error on start"
+  Fix:   Full reset: docker-compose down -v && docker-compose up -d
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📚 DOCUMENTATION                                                            ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  README.md                 → Overview & features
+  DOCKER_SETUP.md          → Docker configuration
+  RESET_DATABASE_GUIDE.md  → How to reset with new schema
+  DATA_IMPORT_GUIDE.md     → Detailed import instructions
+  QUICK_REFERENCE.md       → Quick commands
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🎉 READY TO GO?                                                            ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  1. ✅ Reset: docker-compose down -v && docker-compose up -d
+  2. ✅ Wait: 30 seconds
+  3. ✅ Open: http://localhost:3000
+  4. ✅ Register: Create account
+  5. ✅ Login: Use credentials
+  6. ✅ Import: SAMPLE_DATA.csv
+  7. ✅ Explore: Your data on dashboards!
+
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                        LET'S GET STARTED! 🚀                              ║
+║                                                                            ║
+║  Command to run now:                                                       ║
+║  $ docker-compose down -v && docker-compose up -d                         ║
+║                                                                            ║
+║  Then open: http://localhost:3000                                          ║
+║                                                                            ║
+╚═══════════════════════════════════════════════════════════════════════════╝

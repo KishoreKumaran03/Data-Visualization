@@ -1,0 +1,32 @@
+date,category,region,revenue,quantity,cost
+2024-01-01,Electronics,Maharashtra,65000,12,32500
+2024-01-02,Furniture,Karnataka,42000,8,21000
+2024-01-03,Others,Tamil Nadu,28000,6,14000
+2024-01-04,Electronics,Uttar Pradesh,55000,10,27500
+2024-01-05,Furniture,West Bengal,38000,7,19000
+2024-01-06,Electronics,Maharashtra,72000,13,36000
+2024-01-07,Others,Telangana,31000,5,15500
+2024-01-08,Furniture,Karnataka,45000,9,22500
+2024-01-09,Electronics,Gujarat,68000,12,34000
+2024-01-10,Furniture,Delhi,52000,10,26000
+2024-01-11,Others,Kerala,25000,4,12500
+2024-01-12,Electronics,Punjab,58000,11,29000
+2024-01-13,Furniture,Haryana,48000,9,24000
+2024-01-14,Electronics,Karnataka,75000,14,37500
+2024-01-15,Others,Maharashtra,33000,6,16500
+2024-01-16,Electronics,Tamil Nadu,62000,11,31000
+2024-01-17,Furniture,Telangana,41000,8,20500
+2024-01-18,Electronics,Gujarat,71000,13,35500
+2024-01-19,Others,Uttar Pradesh,29000,5,14500
+2024-01-20,Furniture,West Bengal,44000,8,22000
+2024-01-21,Electronics,Maharashtra,78000,15,39000
+2024-01-22,Others,Karnataka,26000,4,13000
+2024-01-23,Furniture,Delhi,50000,9,25000
+2024-01-24,Electronics,Punjab,65000,12,32500
+2024-01-25,Others,Haryana,32000,6,16000
+2024-01-26,Furniture,Telangana,43000,8,21500
+2024-01-27,Electronics,Gujarat,73000,14,36500
+2024-01-28,Others,Tamil Nadu,27000,5,13500
+2024-01-29,Furniture,Kerala,39000,7,19500
+2024-01-30,Electronics,Maharashtra,80000,15,40000
+2024-01-31,Others,West Bengal,34000,6,17000

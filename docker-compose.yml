@@ -1,0 +1,66 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: datavis_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: datavis_db
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./backend/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - datavis_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+  api:
+    container_name: datavis_api
+    build: ./backend
+    ports:
+      - "8001:8000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=datavis_db
+      - JWT_SECRET=secret-key-123-analytics
+      - NODE_ENV=development
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - datavis_network
+
+  web:
+    container_name: datavis_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api
+    networks:
+      - datavis_network
+
+volumes:
+  db_data:
+
+networks:
+  datavis_network:
+    driver: bridge

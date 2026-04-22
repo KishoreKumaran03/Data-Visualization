@@ -1189,7 +1189,7 @@ function DashboardSummary() {
         {/* Trend Chart Card */}
         <div ref={trendPanelRef} className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col h-[500px] relative">
           <DownloadButton chartRef={trendPanelRef} filename="dashboard-trend-panel" />
-          <div className="flex justify-between items-start mb-8">
+          <div className="mb-8 flex items-start justify-between gap-4 pr-20">
             <div>
               <h4 className="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">Revenue & Profit Trend</h4>
               <div className="flex items-center gap-2 mt-1">
@@ -1197,7 +1197,7 @@ function DashboardSummary() {
                 <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Real-time analytical sync</span>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button onClick={() => setShowExplain(true)} className="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 text-[10px] font-black rounded-xl border border-indigo-100 dark:border-indigo-800 hover:scale-105 active:scale-95 transition-all">EXPLAIN AI</button>
               <button className="px-4 py-2 bg-slate-50 dark:bg-slate-800 text-slate-500 text-[10px] font-black rounded-xl border border-slate-100 dark:border-slate-700">COMPARE</button>
             </div>
@@ -1238,7 +1238,7 @@ function DashboardSummary() {
         {/* India Map Card */}
         <div ref={heatmapPanelRef} className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col h-[500px] relative overflow-hidden group">
           <DownloadButton chartRef={heatmapPanelRef} filename="dashboard-heatmap-panel" />
-          <div className="w-full flex justify-between items-start relative z-10">
+          <div className="relative z-10 flex w-full items-start justify-between gap-4 pr-20">
             <div>
               <h2 className="text-2xl font-black tracking-tighter">India Market Hubs</h2>
               <p className="text-xs text-slate-400 font-bold mt-1 uppercase">Strategic Regional distribution</p>

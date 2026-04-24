@@ -231,7 +231,7 @@ function App() {
           token ? (
             <div className={`bg-[#f8fafc] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 min-h-screen flex transition-all duration-300 ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
 
-              {/* Sidebar: Analytics Pro Legacy Style */}
+              {/* Sidebar: Civora legacy style */}
               <aside className={`${isSidebarCollapsed ? 'w-20' : 'w-64'} border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col fixed h-full z-20 transition-all duration-300 shadow-2xl`}>
                 <button
                   onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
@@ -250,7 +250,7 @@ function App() {
                     <div className="size-8 text-primary shrink-0">
                       <span className="material-symbols-outlined text-3xl font-black">finance_mode</span>
                     </div>
-                    {!isSidebarCollapsed && <span className="text-xl font-bold tracking-tight text-primary font-display uppercase whitespace-nowrap">Analytics Pro</span>}
+                    {!isSidebarCollapsed && <span className="text-xl font-bold tracking-tight text-primary font-display uppercase whitespace-nowrap">Civora</span>}
                   </div>
                 </div>
 
@@ -471,11 +471,11 @@ function Header({ user, setDarkMode, darkMode, logout }) {
 
   const handleExportPdf = () => {
     const doc = new jsPDF();
-    doc.setFontSize(20); doc.text('Analytics Pro - Dashboard Report', 20, 20);
+    doc.setFontSize(20); doc.text('Civora - Dashboard Report', 20, 20);
     doc.setFontSize(12); doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 35);
     doc.text(`User: ${user?.name || 'Administrator'}`, 20, 45);
     doc.text('Export your project reports from the Reports page for full detail.', 20, 60);
-    doc.save('analytics_dashboard_report.pdf');
+    doc.save('civora_dashboard_report.pdf');
     setIsExportOpen(false);
   };
 
@@ -1013,7 +1013,7 @@ function Login({ setUser, setToken }) {
   return (
     <div className="relative isolate flex min-h-screen w-full bg-white text-slate-900 font-display">
       <div className="relative z-20 flex flex-col w-full lg:w-[45%] xl:w-[40%] bg-white border-r border-slate-200 shadow-2xl p-12 lg:p-24 justify-center">
-        <div className="flex items-center gap-3 mb-12"><div className="size-8 text-primary"><span className="material-symbols-outlined text-3xl font-black">finance_mode</span></div><h2 className="text-xl font-black tracking-tight uppercase">Analytics Pro</h2></div>
+        <div className="flex items-center gap-3 mb-12"><div className="size-8 text-primary"><span className="material-symbols-outlined text-3xl font-black">finance_mode</span></div><h2 className="text-xl font-black tracking-tight uppercase">Civora</h2></div>
         <h1 className="text-5xl font-black tracking-tighter mb-4">Sign in.</h1>
         <p className="text-slate-400 text-lg mb-10">Access your enterprise data hub.</p>
         {error && <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-2xl text-sm font-bold">{error}</div>}
@@ -2438,7 +2438,7 @@ function SettingsPage({ user }) {
       return {
         display_name: user?.name || 'Administrator',
         email: user?.email || '',
-        workspace_name: 'Analytics Pro Workspace',
+        workspace_name: 'Civora Workspace',
         default_currency: localStorage.getItem('settings_default_currency') || 'INR',
         default_timezone: localStorage.getItem('settings_default_timezone') || 'Asia/Kolkata',
         weekly_reports: localStorage.getItem('settings_weekly_reports') !== 'false',
@@ -2450,7 +2450,7 @@ function SettingsPage({ user }) {
       return {
         display_name: user?.name || 'Administrator',
         email: user?.email || '',
-        workspace_name: 'Analytics Pro Workspace',
+        workspace_name: 'Civora Workspace',
         default_currency: 'INR',
         default_timezone: 'Asia/Kolkata',
         weekly_reports: true,

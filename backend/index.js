@@ -175,7 +175,7 @@ const authenticateToken = (req, res, next) => {
 
 // API Endpoints
 app.get('/', (req, res) => {
-  res.send('Analytics Platform Auth & Data API');
+  res.send('Civora Auth & Data API');
 });
 
 // Auth Endpoints
